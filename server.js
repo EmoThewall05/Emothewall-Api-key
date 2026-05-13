@@ -12,7 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 // ==================== IN-MEMORY DB ====================
-let users = [];
+let users = [
+  { id: 'admin001', name: 'Dwin', phone: '0555602282', password: 'emobies2024', role: 'admin', token: null }
+];
 let complaints = [];
 let messages = [];
 let notifications = [];
@@ -73,7 +75,9 @@ app.post('/api/register', (req, res) => {
 // Login
 app.post('/api/login', (req, res) => {
   const { phone, password } = req.body;
-  const user = users.find(u => u.phone === phone && u.password === password);
+  const user = phone 
+    ? users.find(u => u.phone === phone && u.password === password)
+    : users.find(u => u.password === password);
   if (!user) return res.status(401).json({ error: 'Invalid credentials' });
   user.token = genToken();
   res.json({ success: true, token: user.token, role: user.role, name: user.name, id: user.id });
