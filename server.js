@@ -13,7 +13,7 @@ app.use(express.json());
 
 // ==================== IN-MEMORY DB ====================
 let users = [
-  { id: 'admin001', name: 'Dwin', phone: '0555602282', password: 'emobies2024', role: 'admin', token: null }
+  { id: 'admin001', name: 'Dwin', phone: '0555602282', password: 'emobies@2026!', role: 'admin', token: null }
 ];
 let complaints = [];
 let messages = [];
